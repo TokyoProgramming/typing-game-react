@@ -36,6 +36,24 @@ const TimerReducer = (state = {}, action) => {
         ...state,
         loading: false,
       };
+
+    case 'START_TYPING':
+      return {
+        ...state,
+        start: true,
+      };
+    case 'END_TYPING':
+      return {
+        ...state,
+        start: false,
+        countUpStart: false,
+        end: true,
+      };
+    case 'COUNT_UP_START':
+      return {
+        ...state,
+        countUpStart: !state.countUpStart,
+      };
     default:
       return state;
   }

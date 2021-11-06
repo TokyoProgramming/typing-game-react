@@ -9,6 +9,9 @@ const initialState = {
   wordsLength: 0,
   splitWords: [],
   loading: true,
+  start: false,
+  end: false,
+  countUpStart: false,
 };
 
 export const TimerContext = createContext();
@@ -45,6 +48,21 @@ export const TimerProvider = ({ children }) => {
       payload: data,
     });
   }
+  function startTyping() {
+    dispatch({
+      type: 'START_TYPING',
+    });
+  }
+  function endTyping() {
+    dispatch({
+      type: 'END_TYPING',
+    });
+  }
+  function countUpStartFunction() {
+    dispatch({
+      type: 'COUNT_UP_START',
+    });
+  }
 
   return (
     <TimerContext.Provider
@@ -55,11 +73,17 @@ export const TimerProvider = ({ children }) => {
         sentence: state.sentence,
         wordsLength: state.wordsLength,
         wordsArray: state.wordsArray,
+        start: state.start,
+        end: state.end,
+        countUpStart: state.countUpStart,
         calculateWpm,
         getText,
         setLoading,
         getWordsLength,
         getWordsArray,
+        startTyping,
+        endTyping,
+        countUpStartFunction,
       }}
     >
       {children}

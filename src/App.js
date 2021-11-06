@@ -3,7 +3,7 @@ import Typing from './Typing';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Timer />
       <Typing />
     </div>
